@@ -211,6 +211,12 @@
           <label for="message">Message</label>
           <textarea id="message" name="message" required></textarea>
         </div>
+        <!-- Honeypot: real visitors never see or fill this (off-screen, not
+             tab-reachable); most bots fill every field blindly. -->
+        <div style="position:absolute; left:-9999px" aria-hidden="true">
+          <label for="website">Website</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
         <button type="submit">Send</button>
         <p class="form-status" id="form-status"></p>
       </form>
@@ -226,34 +232,47 @@
   </div>
 
   <script>
-    // Placeholder handler. Once a form backend (e.g. Formspree) is wired up,
-    // set FORM_ENDPOINT below and this will POST there instead of just
-    // showing the "not connected yet" message.
-    const FORM_ENDPOINT = ""; // e.g. "https://formspree.io/f/xxxxxxx"
+    // Backend: a Google Apps Script Web App (see apps-script-contact-form.gs
+    // in the repo) that appends each submission as a row to a Google Sheet.
+    // Set FORM_ENDPOINT to the deployed Web App URL once it exists —
+    // https://script.google.com/macros/s/XXXXXXXXXXXX/exec
+    const FORM_ENDPOINT = "";
 
     document.getElementById("contact-form").addEventListener("submit", async (e) => {
       e.preventDefault();
       const status = document.getElementById("form-status");
+      const form = e.target;
+
       if (!FORM_ENDPOINT) {
         status.textContent = "This form isn't connected yet — please check back soon.";
         status.className = "form-status err";
         return;
       }
-      const form = e.target;
-      const data = new FormData(form);
+
+      // Honeypot: real visitors never see/fill the hidden "website" field.
+      // If it's filled, silently pretend success — no point telling a bot
+      // it failed, and no request needs to go out at all.
+      if (form.website.value) {
+        status.textContent = "Thanks — message sent.";
+        status.className = "form-status ok";
+        form.reset();
+        return;
+      }
+
+      const params = new URLSearchParams(new FormData(form));
       try {
-        const res = await fetch(FORM_ENDPOINT, {
+        // Apps Script Web Apps don't reliably send CORS headers on their
+        // response, so this uses no-cors: the POST still lands and the
+        // script still appends the row, we just can't read a response back
+        // to confirm it. Acceptable trade-off for a low-stakes contact form.
+        await fetch(FORM_ENDPOINT, {
           method: "POST",
-          body: data,
-          headers: { Accept: "application/json" },
+          mode: "no-cors",
+          body: params,
         });
-        if (res.ok) {
-          status.textContent = "Thanks — message sent.";
-          status.className = "form-status ok";
-          form.reset();
-        } else {
-          throw new Error("Submission failed");
-        }
+        status.textContent = "Thanks — message sent.";
+        status.className = "form-status ok";
+        form.reset();
       } catch (err) {
         status.textContent = "Something went wrong — please try again later.";
         status.className = "form-status err";

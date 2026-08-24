@@ -22,7 +22,22 @@
  *
  * Re-deploying after editing this file: Deploy → Manage deployments → edit
  * (pencil) → New version → Deploy. The URL stays the same across versions.
+ *
+ * NOTIFICATIONS: each submission emails NOTIFY_EMAIL (set below) with the
+ * message body, and sets Reply-To to the sender so you can reply directly
+ * from your inbox. Google's daily MailApp quota on a consumer account is
+ * 100 emails/day — far beyond what a contact form will use. If the send ever
+ * fails, the submission is still written to the Sheet first, so nothing is
+ * lost; the error is logged to the Apps Script execution log instead.
+ *
+ * The first re-deploy after adding email will re-prompt for authorization,
+ * because sending mail is a new permission the earlier version didn't need.
  */
+
+// Where submission notifications are sent. Change this to whichever address
+// you actually watch. It's fine to leave in the repo — it's just an inbox
+// address, not a secret, and the script itself is what holds the access.
+var NOTIFY_EMAIL = "robert.rcampbell@gmail.com";
 
 function doPost(e) {
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
@@ -47,6 +62,28 @@ function doPost(e) {
   }
 
   sheet.appendRow([new Date(), name, email, message]);
+
+  // Notify by email. Wrapped so a mail failure (quota, transient error) can
+  // never lose the submission — the row is already saved above either way.
+  try {
+    MailApp.sendEmail({
+      to: NOTIFY_EMAIL,
+      subject: "tetra6.com contact form — " + name,
+      replyTo: email,
+      body:
+        "New contact form submission from tetra6.com\n\n" +
+        "Name:    " + name + "\n" +
+        "Email:   " + email + "\n" +
+        "Time:    " + new Date() + "\n\n" +
+        "Message:\n" + message + "\n\n" +
+        "---\n" +
+        "Reply directly to this email to respond to them.\n" +
+        "Full log: " + SpreadsheetApp.getActiveSpreadsheet().getUrl() + "\n"
+    });
+  } catch (err) {
+    // Log to the Apps Script execution log rather than failing the request.
+    console.error("Notification email failed: " + err);
+  }
 
   return ContentService.createTextOutput(
     JSON.stringify({ ok: true })

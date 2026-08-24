@@ -129,6 +129,105 @@
     line-height: 1.6;
   }
 
+  .section-lede {
+    color: var(--tetra-silver);
+    line-height: 1.7;
+    margin: 0 0 1.5rem;
+    max-width: 38rem;
+  }
+
+  /* --- Capabilities --- */
+  .cap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 1rem;
+  }
+  .cap {
+    background: var(--tetra-carbon);
+    border: 1px solid var(--tetra-graphite);
+    border-radius: 2px;
+    padding: 1.1rem 1.25rem;
+  }
+  .cap h3 {
+    color: var(--tetra-white);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0 0 0.45rem;
+  }
+  .cap p {
+    color: var(--tetra-silver);
+    font-size: 0.85rem;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* --- Founder bio --- */
+  .bio {
+    display: grid;
+    grid-template-columns: 13rem 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  .bio-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--tetra-graphite);
+    border-radius: 2px;
+  }
+  .bio-name {
+    color: var(--tetra-white);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 0.15rem;
+    letter-spacing: -0.01em;
+  }
+  .bio-role {
+    color: var(--tetra-red);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    margin: 0 0 1.1rem;
+  }
+  .bio-body p {
+    color: var(--tetra-silver);
+    line-height: 1.75;
+    margin: 0 0 0.9rem;
+  }
+  .bio-body p:last-child { margin-bottom: 0; }
+  .bio-body strong { color: var(--tetra-white); font-weight: 600; }
+  @media (max-width: 40rem) {
+    .bio { grid-template-columns: 1fr; gap: 1.5rem; }
+    .bio-photo { max-width: 11rem; }
+  }
+
+  /* --- Credentials --- */
+  .cred-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .cred {
+    border-left: 2px solid var(--tetra-graphite);
+    padding: 0.1rem 0 0.1rem 1rem;
+  }
+  .cred h4 {
+    color: var(--tetra-white);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+  }
+  .cred p {
+    color: var(--tetra-silver);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
   .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
@@ -391,15 +490,130 @@
         community projects. Some of that work is public; see Projects
         below for real, shipped examples rather than a services list.
       </p>
-      <ul class="focus-list">
-        <li>Systems, network &amp; security engineering</li>
-        <li>Web &amp; mobile software development</li>
-        <li>Mission-oriented and community-driven information systems</li>
-      </ul>
       <p class="llc-note">
         Tetra6 currently operates as an independent practice. Formal
         incorporation (LLC) is planned but not yet complete.
       </p>
+    </section>
+
+    <section class="capabilities">
+      <h2>Capabilities</h2>
+      <p class="section-lede">
+        Six areas the practice works across — grounded in delivered work
+        rather than a services menu.
+      </p>
+      <div class="cap-grid">
+        <div class="cap">
+          <h3>Industrial &amp; OT Systems</h3>
+          <p>Manufacturing execution systems, OEE and production-data visibility, industrial connectivity, embedded and PLC-adjacent hardware.</p>
+        </div>
+        <div class="cap">
+          <h3>Infrastructure &amp; Security</h3>
+          <p>Linux and network engineering, zero-trust segmentation, ICS/OT security, incident response, system hardening and monitoring.</p>
+        </div>
+        <div class="cap">
+          <h3>Identity &amp; Access</h3>
+          <p>PIV smartcard credentialing and PKI, identity and access management across cloud providers, OIDC federation, Active Directory and LDAP.</p>
+        </div>
+        <div class="cap">
+          <h3>OSINT &amp; Threat Intelligence</h3>
+          <p>Open-source collection and analysis, protective and threat-assessment work, insider-threat and counter-elicitation methods.</p>
+        </div>
+        <div class="cap">
+          <h3>Software Engineering</h3>
+          <p>Web platforms, progressive web apps, mobile, embedded firmware, and multilingual systems with heavy localization requirements.</p>
+        </div>
+        <div class="cap">
+          <h3>Delivery &amp; Leadership</h3>
+          <p>Project management, multi-stakeholder coordination, technical training and documentation, cross-cultural and international delivery.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cloud">
+      <h2>Cloud &amp; Delivery</h2>
+      <p class="section-lede">
+        Tetra6 works across the major cloud platforms — Amazon Web Services,
+        Google Cloud and DigitalOcean, with working Azure familiarity —
+        covering hosting and compute, object storage, identity and access
+        management, DNS, and automated build-and-publish pipelines.
+      </p>
+      <p class="section-lede" style="margin-bottom:0">
+        Recent work includes an S3-backed content pipeline publishing through
+        GitHub Actions with OIDC rather than long-lived credentials, Google
+        Workspace and Apps Script automation, multilingual text-to-speech for
+        narrated audio content, and migrating a self-managed server estate onto
+        static hosting. Current AI and generative tooling gets used where it
+        earns its place.
+      </p>
+    </section>
+
+    <section class="founder">
+      <h2>Founder</h2>
+      <div class="bio">
+        <picture>
+          <source type="image/webp"
+                  srcset="/assets/robert-240.webp 240w, /assets/robert-480.webp 480w, /assets/robert-720.webp 720w"
+                  sizes="(max-width: 40rem) 11rem, 13rem">
+          <img class="bio-photo" src="/assets/robert-480.jpg" alt="Robert Campbell"
+               width="1254" height="1254" loading="lazy" decoding="async">
+        </picture>
+        <div class="bio-body">
+          <p class="bio-name">Robert Campbell</p>
+          <p class="bio-role">Founder</p>
+          <p>
+            Twenty years across IT operations, manufacturing technology, and
+            critical infrastructure security. Current work centres on
+            manufacturing execution systems and industrial data environments —
+            Linux, PostgreSQL, Python, APIs, and embedded and PLC-adjacent
+            hardware.
+          </p>
+          <p>
+            Twelve of those years were spent in <strong>Laos, Cambodia and
+            Thailand</strong>, delivering technology in resource-constrained,
+            high-consequence environments: coordinating with government
+            ministries and local partners, leading media and education
+            infrastructure for a 400-student school, developing AI-driven
+            agricultural diagnostics for crop disease and pest identification,
+            and shipping the first native Lao-language Android application.
+            Language and localization tooling built in that period remains in
+            use today. He speaks Lao, Thai and Khmer from that work.
+          </p>
+          <p>
+            He holds CompTIA Security+ and credentials spanning ICS/OT
+            cybersecurity, open-source intelligence, and threat analysis, and is
+            an active member of FBI InfraGard, DHS HSIN, and the Association of
+            Threat Assessment Professionals.
+          </p>
+        </div>
+      </div>
+
+      <div class="cred-grid">
+        <div class="cred">
+          <h4>Certifications</h4>
+          <p>CompTIA Security+ ce · Threat Intelligence &amp; Analysis · A.A.S. Information Technology · Google IT Support, UX Design and Project Management Professional Certificates</p>
+        </div>
+        <div class="cred">
+          <h4>Government &amp; Defense Training</h4>
+          <p>CISA ICS Cybersecurity 210W (complete series) · DCSA Insider Threat Analysis and Counterintelligence for the Defense Industrial Base · DoD Controlled Unclassified Information · Irregular Warfare 101</p>
+        </div>
+        <div class="cred">
+          <h4>Intelligence &amp; Protective</h4>
+          <p>Intermediate OSINT · Global Espionage &amp; Intelligence Services · Countering Information Operations · Elicitation &amp; Counter-Elicitation · Executive Protection Principles · Overseas Personal Security</p>
+        </div>
+        <div class="cred">
+          <h4>Infrastructure &amp; Supply Chain</h4>
+          <p>Infrastructure Liaison Officer · Global Intermodal Supply Chain · Principles of Protection for Critical Infrastructure · KiCad and STM32 hardware design</p>
+        </div>
+        <div class="cred">
+          <h4>Affiliations</h4>
+          <p>FBI InfraGard, Michigan chapter · DHS Homeland Security Information Network · Association of Threat Assessment Professionals · former Meeting Coordinator, InfraGard Kentucky Members Alliance</p>
+        </div>
+        <div class="cred">
+          <h4>Languages</h4>
+          <p>Lao, Thai and Khmer from twelve years of fieldwork · Russian and Spanish in progress</p>
+        </div>
+      </div>
     </section>
 
     <section class="projects">

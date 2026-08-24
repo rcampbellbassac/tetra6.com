@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tetra6 — Consulting &amp; Contracting</title>
-<meta name="description" content="Tetra6 provides independent consulting and technical contracting, with a focus on government and public-sector work.">
+<meta name="description" content="Tetra6 is an independent consulting and technical practice — systems, security, and software work, with 20+ years of hands-on experience behind it.">
 <style>
   :root {
     --tetra-black:    #080A0D;
@@ -104,6 +104,80 @@
     background: var(--tetra-red);
   }
 
+  .llc-note {
+    font-size: 0.85rem;
+    color: var(--tetra-steel);
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--tetra-graphite);
+    max-width: 38rem;
+    line-height: 1.6;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+  .project-card {
+    display: block;
+    padding: 1.1rem 1.25rem;
+    background: var(--tetra-carbon);
+    border: 1px solid var(--tetra-graphite);
+    border-radius: 2px;
+    text-decoration: none;
+    transition: border-color 0.15s ease;
+  }
+  .project-card:hover {
+    border-color: var(--tetra-steel);
+  }
+  .project-card .name {
+    color: var(--tetra-white);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin: 0 0 0.4rem;
+  }
+  .project-card .desc {
+    color: var(--tetra-silver);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+  .projects-more {
+    margin-top: 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  .connect-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+  .connect-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.1rem;
+    background: var(--tetra-carbon);
+    border: 1px solid var(--tetra-graphite);
+    border-radius: 2px;
+    color: var(--tetra-white);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: border-color 0.15s ease;
+  }
+  .connect-link:hover {
+    border-color: var(--tetra-red);
+    color: var(--tetra-white);
+  }
+  .connect-note {
+    color: var(--tetra-steel);
+    font-size: 0.85rem;
+    margin-top: 1rem;
+  }
+
   form {
     display: grid;
     gap: 1rem;
@@ -181,19 +255,89 @@
     <section class="about">
       <h2>About</h2>
       <p>
-        Tetra6 provides independent consulting and technical contracting —
-        systems and network engineering, security-focused infrastructure
-        work, and mission-oriented information systems.
+        Tetra6 is an independent consulting and technical practice, built
+        on 20+ years of hands-on experience across IT, systems and network
+        engineering, cybersecurity, and software development.
       </p>
       <p>
-        The current focus is government and public-sector engagements,
-        with the practice open to broader private-sector work as it grows.
+        The work spans a deliberately broad range — infrastructure and
+        security engineering, web and mobile development, data and
+        analytics — applied wherever it's actually needed, from
+        government and mission-driven organizations to independent and
+        community projects. Some of that work is public; see Projects
+        below for real, shipped examples rather than a services list.
       </p>
       <ul class="focus-list">
-        <li>Systems &amp; network engineering</li>
-        <li>Security-focused infrastructure</li>
-        <li>Mission-oriented information systems</li>
+        <li>Systems, network &amp; security engineering</li>
+        <li>Web &amp; mobile software development</li>
+        <li>Mission-oriented and community-driven information systems</li>
       </ul>
+      <p class="llc-note">
+        Tetra6 currently operates as an independent practice. Formal
+        incorporation (LLC) is planned but not yet complete.
+      </p>
+    </section>
+
+    <section class="projects">
+      <h2>Projects</h2>
+      <p style="color: var(--tetra-silver); line-height: 1.6; margin: 0 0 1.25rem; max-width: 38rem;">
+        A sample of real, active work — web platforms, mobile apps,
+        embedded firmware, and open-licensed language/design resources.
+      </p>
+      <div class="project-grid">
+        <a class="project-card" href="https://github.com/rcampbellbassac/laochristian.org" target="_blank" rel="noopener">
+          <p class="name">laochristian.org</p>
+          <p class="desc">Main site for a Lao-language Christian ministry — content, resources, and community outreach.</p>
+        </a>
+        <a class="project-card" href="https://github.com/rcampbellbassac/lao-christian-app" target="_blank" rel="noopener">
+          <p class="name">lao-christian-app</p>
+          <p class="desc">A Vue progressive web app delivering the same ministry's Bible, books, and media content as an installable app.</p>
+        </a>
+        <a class="project-card" href="https://github.com/rcampbellbassac/sea-sda.org" target="_blank" rel="noopener">
+          <p class="name">sea-sda.org</p>
+          <p class="desc">Southeast Asian Seventh-day Adventist ministry site.</p>
+        </a>
+        <a class="project-card" href="https://github.com/Missionary-Readiness-Institute/readiness-platform" target="_blank" rel="noopener">
+          <p class="name">readiness-platform</p>
+          <p class="desc">Training curriculum platform for the Missionary Readiness Institute, built on MkDocs.</p>
+        </a>
+        <a class="project-card" href="https://github.com/rcampbellbassac/cardputer-pda" target="_blank" rel="noopener">
+          <p class="name">cardputer-pda</p>
+          <p class="desc">Rust firmware turning an M5Stack Cardputer into a pocket notebook/PDA.</p>
+        </a>
+        <a class="project-card" href="https://github.com/rcampbellbassac/Kmhmu-Dictionary" target="_blank" rel="noopener">
+          <p class="name">Kmhmu-Dictionary</p>
+          <p class="desc">Open, community-maintained Kmhmu' language wordlist.</p>
+        </a>
+        <a class="project-card" href="https://github.com/rcampbellbassac/lao-dictionary" target="_blank" rel="noopener">
+          <p class="name">lao-dictionary</p>
+          <p class="desc">Open Lao wordlist for language tooling and reference.</p>
+        </a>
+        <a class="project-card" href="https://github.com/rcampbellbassac/KouangSiWaterfall" target="_blank" rel="noopener">
+          <p class="name">KouangSiWaterfall</p>
+          <p class="desc">An open-licensed display font.</p>
+        </a>
+        <a class="project-card" href="https://github.com/KentuckyHilltribe/kentuckyhilltribe.com" target="_blank" rel="noopener">
+          <p class="name">kentuckyhilltribe.com</p>
+          <p class="desc">Site for Kentucky Hilltribe, the practice Tetra6 grew out of.</p>
+        </a>
+      </div>
+      <p class="projects-more">
+        More on <a href="https://github.com/rcampbellbassac" target="_blank" rel="noopener">GitHub</a>.
+      </p>
+    </section>
+
+    <section class="connect">
+      <h2>Connect</h2>
+      <div class="connect-links">
+        <a class="connect-link" href="https://www.linkedin.com/in/rcampbellbassac" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="connect-link" href="https://github.com/rcampbellbassac" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p class="connect-note">
+        A dedicated Tetra6 LinkedIn Page is planned once the business is
+        formally incorporated — for now, the personal profile above is
+        the best place to connect.
+      </p>
     </section>
 
     <section class="contact">
@@ -221,8 +365,7 @@
         <p class="form-status" id="form-status"></p>
       </form>
       <p class="form-note">
-        This form is not yet wired to a delivery service — submissions
-        won't go anywhere until that's connected.
+        Submissions go straight to me — I'll get back to you as soon as I can.
       </p>
     </section>
 
@@ -234,8 +377,6 @@
   <script>
     // Backend: a Google Apps Script Web App (see apps-script-contact-form.gs
     // in the repo) that appends each submission as a row to a Google Sheet.
-    // Set FORM_ENDPOINT to the deployed Web App URL once it exists —
-    // https://script.google.com/macros/s/XXXXXXXXXXXX/exec
     const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycby46Lzf1yUwCG3B_tRk34DBDq9hpe-6XsYPIcN89Hk9Bq7c64HdBS-7V6pNddVdDSUN/exec";
 
     document.getElementById("contact-form").addEventListener("submit", async (e) => {

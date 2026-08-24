@@ -576,23 +576,42 @@
         return;
       }
 
+      const button = form.querySelector("button");
       const params = new URLSearchParams(new FormData(form));
+
+      button.disabled = true;
+      status.textContent = "Sending…";
+      status.className = "form-status ok";
+
       try {
-        // Apps Script Web Apps don't reliably send CORS headers on their
-        // response, so this uses no-cors: the POST still lands and the
-        // script still appends the row, we just can't read a response back
-        // to confirm it. Acceptable trade-off for a low-stakes contact form.
-        await fetch(FORM_ENDPOINT, {
+        // URLSearchParams sends application/x-www-form-urlencoded with no
+        // custom headers, which makes this a CORS "simple request" — no
+        // preflight. Apps Script doesn't answer OPTIONS preflights, but it
+        // does return Access-Control-Allow-Origin on the actual response,
+        // so the result here is genuinely readable. That matters: it's what
+        // lets us tell the visitor the truth about whether it worked.
+        const res = await fetch(FORM_ENDPOINT, {
           method: "POST",
-          mode: "no-cors",
           body: params,
         });
+
+        if (!res.ok) throw new Error("HTTP " + res.status);
+
+        const data = await res.json();
+        if (!data.ok) throw new Error(data.error || "rejected");
+
         status.textContent = "Thanks — message sent.";
         status.className = "form-status ok";
         form.reset();
       } catch (err) {
-        status.textContent = "Something went wrong — please try again later.";
+        // Never claim success on failure. Give them a route that always works.
+        status.innerHTML =
+          "That didn't send. Please email " +
+          '<a href="mailto:robert@tetra6.com">robert@tetra6.com</a> directly — ' +
+          "sorry for the trouble.";
         status.className = "form-status err";
+      } finally {
+        button.disabled = false;
       }
     });
   </script>

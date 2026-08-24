@@ -37,7 +37,7 @@
 // Where submission notifications are sent. Change this to whichever address
 // you actually watch. It's fine to leave in the repo — it's just an inbox
 // address, not a secret, and the script itself is what holds the access.
-var NOTIFY_EMAIL = "robert.rcampbell@gmail.com";
+var NOTIFY_EMAIL = "robert@tetra6.com";
 
 function doPost(e) {
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();

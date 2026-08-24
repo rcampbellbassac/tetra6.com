@@ -143,9 +143,40 @@
     border: 1px solid var(--tetra-graphite);
     border-radius: 2px;
     transition: border-color 0.15s ease;
+    position: relative;
+    overflow: hidden;
   }
   .project-card:hover {
     border-color: var(--tetra-steel);
+  }
+  /* Oversized mark bleeding off the corner. Kept very low contrast so it
+     reads as texture, never as competition for the text above it. */
+  .card-mark {
+    position: absolute;
+    right: -0.9rem;
+    bottom: -1.1rem;
+    width: 6.5rem;
+    height: 6.5rem;
+    color: var(--tetra-white);
+    opacity: 0.045;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .card-icon {
+    width: 1.55rem;
+    height: 1.55rem;
+    color: var(--tetra-red);
+    display: block;
+    margin-bottom: 0.8rem;
+  }
+  /* Lift the real content above the watermark explicitly, rather than with a
+     blanket `> *` rule that would also catch .card-mark itself. */
+  .project-card .card-icon,
+  .project-card .name,
+  .project-card .desc,
+  .project-card .project-links {
+    position: relative;
+    z-index: 1;
   }
   .project-card .name {
     color: var(--tetra-white);
@@ -295,6 +326,49 @@
     <symbol id="icon-linkedin" viewBox="0 0 16 16">
       <path fill="currentColor" d="M1.65 4.28a1.63 1.63 0 1 1 0-3.27 1.63 1.63 0 0 1 0 3.27zM.24 5.98h2.83V16H.24V5.98zM5.9 5.98h2.71v1.37h.04c.38-.71 1.3-1.47 2.68-1.47 2.87 0 3.4 1.85 3.4 4.26V16h-2.83v-4.87c0-1.16-.02-2.66-1.66-2.66-1.67 0-1.92 1.26-1.92 2.58V16H5.9V5.98z"/>
     </symbol>
+
+    <!-- Project marks. Monoline, 24px grid, drawn to sit together as a set. -->
+    <symbol id="mk-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 5.5A1.5 1.5 0 0 1 4.5 4H10a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4.5A1.5 1.5 0 0 1 3 15.5Z"/>
+      <path d="M21 5.5A1.5 1.5 0 0 0 19.5 4H14a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h5.5a1.5 1.5 0 0 0 1.5-1.5Z"/>
+    </symbol>
+    <symbol id="mk-device" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="6" y="2" width="12" height="20" rx="2.5"/>
+      <path d="M10.5 18.5h3"/>
+      <path d="M9 7.5h6M9 11h6"/>
+    </symbol>
+    <symbol id="mk-broadcast" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="2"/>
+      <path d="M7.8 7.8a6 6 0 0 0 0 8.4M16.2 16.2a6 6 0 0 0 0-8.4"/>
+      <path d="M4.9 4.9a10 10 0 0 0 0 14.2M19.1 19.1a10 10 0 0 0 0-14.2"/>
+    </symbol>
+    <symbol id="mk-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3 3 7.5 12 12l9-4.5Z"/>
+      <path d="m3 12.5 9 4.5 9-4.5"/>
+      <path d="m3 17 9 4.5 9-4.5"/>
+    </symbol>
+    <symbol id="mk-chip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="7" y="7" width="10" height="10" rx="1.5"/>
+      <path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/>
+    </symbol>
+    <symbol id="mk-translate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 5.5A1.5 1.5 0 0 1 4.5 4h9A1.5 1.5 0 0 1 15 5.5v4A1.5 1.5 0 0 1 13.5 11H7l-4 3Z"/>
+      <path d="M18 9h1.5A1.5 1.5 0 0 1 21 10.5v4a1.5 1.5 0 0 1-1.5 1.5H17l-3 2.5V16"/>
+    </symbol>
+    <symbol id="mk-wordlist" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 7h5.5M13 7h7"/>
+      <path d="M4 12h4M11.5 12h8.5"/>
+      <path d="M4 17h6M13.5 17h6.5"/>
+    </symbol>
+    <symbol id="mk-type" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m6 17 6-12 6 12"/>
+      <path d="M8.6 12.2h6.8"/>
+      <path d="M4 21h16"/>
+    </symbol>
+    <symbol id="mk-hills" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m2 19 6.5-8.5 4 5 3.5-4.5L22 19Z"/>
+      <circle cx="17.5" cy="5.5" r="1.75"/>
+    </symbol>
   </svg>
   <div class="wrap">
     <header class="hero">
@@ -336,72 +410,90 @@
       </p>
       <div class="project-grid">
         <div class="project-card">
+          <svg class="card-icon" aria-hidden="true"><use href="#mk-book"/></svg>
           <p class="name">laochristian.org</p>
           <p class="desc">Main site for a Lao-language Christian ministry — content, resources, and community outreach.</p>
           <div class="project-links">
             <a class="icon-link" href="https://github.com/rcampbellbassac/laochristian.org" target="_blank" rel="noopener" aria-label="GitHub repository"><svg><use href="#icon-github"/></svg></a>
             <a class="icon-link" href="https://www.laochristian.org/" target="_blank" rel="noopener" aria-label="Live site"><svg><use href="#icon-globe"/></svg></a>
           </div>
+          <svg class="card-mark" aria-hidden="true"><use href="#mk-book"/></svg>
         </div>
         <div class="project-card">
+          <svg class="card-icon" aria-hidden="true"><use href="#mk-device"/></svg>
           <p class="name">lao-christian-app</p>
           <p class="desc">A Vue progressive web app delivering the same ministry's Bible, books, and media content as an installable app.</p>
           <div class="project-links">
             <a class="icon-link" href="https://github.com/rcampbellbassac/lao-christian-app" target="_blank" rel="noopener" aria-label="GitHub repository"><svg><use href="#icon-github"/></svg></a>
             <a class="icon-link" href="https://apps.laochristian.org/" target="_blank" rel="noopener" aria-label="Live site"><svg><use href="#icon-globe"/></svg></a>
           </div>
+          <svg class="card-mark" aria-hidden="true"><use href="#mk-device"/></svg>
         </div>
         <div class="project-card">
+          <svg class="card-icon" aria-hidden="true"><use href="#mk-broadcast"/></svg>
           <p class="name">sea-sda.org</p>
           <p class="desc">Southeast Asian Seventh-day Adventist ministry site.</p>
           <div class="project-links">
             <a class="icon-link" href="https://github.com/rcampbellbassac/sea-sda.org" target="_blank" rel="noopener" aria-label="GitHub repository"><svg><use href="#icon-github"/></svg></a>
             <a class="icon-link" href="https://sea-sda.org/" target="_blank" rel="noopener" aria-label="Live site"><svg><use href="#icon-globe"/></svg></a>
           </div>
+          <svg class="card-mark" aria-hidden="true"><use href="#mk-broadcast"/></svg>
         </div>
         <div class="project-card">
+          <svg class="card-icon" aria-hidden="true"><use href="#mk-layers"/></svg>
           <p class="name">readiness-platform</p>
           <p class="desc">Training curriculum platform for the Missionary Readiness Institute, built on MkDocs.</p>
           <div class="project-links">
             <a class="icon-link" href="https://github.com/Missionary-Readiness-Institute/readiness-platform" target="_blank" rel="noopener" aria-label="GitHub repository"><svg><use href="#icon-github"/></svg></a>
             <a class="icon-link" href="https://missionaryreadiness.com/" target="_blank" rel="noopener" aria-label="Live site"><svg><use href="#icon-globe"/></svg></a>
           </div>
+          <svg class="card-mark" aria-hidden="true"><use href="#mk-layers"/></svg>
         </div>
         <div class="project-card">
+          <svg class="card-icon" aria-hidden="true"><use href="#mk-chip"/></svg>
           <p class="name">cardputer-pda</p>
           <p class="desc">Rust firmware turning an M5Stack Cardputer into a pocket notebook/PDA.</p>
           <div class="project-links">
             <a class="icon-link" href="https://github.com/rcampbellbassac/cardputer-pda" target="_blank" rel="noopener" aria-label="GitHub repository"><svg><use href="#icon-github"/></svg></a>
           </div>
+          <svg class="card-mark" aria-hidden="true"><use href="#mk-chip"/></svg>
         </div>
         <div class="project-card">
+          <svg class="card-icon" aria-hidden="true"><use href="#mk-translate"/></svg>
           <p class="name">Kmhmu-Dictionary</p>
           <p class="desc">Open, community-maintained Kmhmu' language wordlist.</p>
           <div class="project-links">
             <a class="icon-link" href="https://github.com/rcampbellbassac/Kmhmu-Dictionary" target="_blank" rel="noopener" aria-label="GitHub repository"><svg><use href="#icon-github"/></svg></a>
           </div>
+          <svg class="card-mark" aria-hidden="true"><use href="#mk-translate"/></svg>
         </div>
         <div class="project-card">
+          <svg class="card-icon" aria-hidden="true"><use href="#mk-wordlist"/></svg>
           <p class="name">lao-dictionary</p>
           <p class="desc">Open Lao wordlist for language tooling and reference.</p>
           <div class="project-links">
             <a class="icon-link" href="https://github.com/rcampbellbassac/lao-dictionary" target="_blank" rel="noopener" aria-label="GitHub repository"><svg><use href="#icon-github"/></svg></a>
           </div>
+          <svg class="card-mark" aria-hidden="true"><use href="#mk-wordlist"/></svg>
         </div>
         <div class="project-card">
+          <svg class="card-icon" aria-hidden="true"><use href="#mk-type"/></svg>
           <p class="name">KouangSiWaterfall</p>
           <p class="desc">An open-licensed display font.</p>
           <div class="project-links">
             <a class="icon-link" href="https://github.com/rcampbellbassac/KouangSiWaterfall" target="_blank" rel="noopener" aria-label="GitHub repository"><svg><use href="#icon-github"/></svg></a>
           </div>
+          <svg class="card-mark" aria-hidden="true"><use href="#mk-type"/></svg>
         </div>
         <div class="project-card">
+          <svg class="card-icon" aria-hidden="true"><use href="#mk-hills"/></svg>
           <p class="name">kentuckyhilltribe.com</p>
           <p class="desc">Site for Kentucky Hilltribe, the practice Tetra6 grew out of.</p>
           <div class="project-links">
             <a class="icon-link" href="https://github.com/KentuckyHilltribe/kentuckyhilltribe.com" target="_blank" rel="noopener" aria-label="GitHub repository"><svg><use href="#icon-github"/></svg></a>
             <a class="icon-link" href="https://kentuckyhilltribe.com/" target="_blank" rel="noopener" aria-label="Live site"><svg><use href="#icon-globe"/></svg></a>
           </div>
+          <svg class="card-mark" aria-hidden="true"><use href="#mk-hills"/></svg>
         </div>
       </div>
       <p class="projects-more">

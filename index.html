@@ -5,6 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tetra6 — Consulting &amp; Contracting</title>
 <meta name="description" content="Tetra6 is an independent consulting and technical practice — systems, security, and software work, with 20+ years of hands-on experience behind it.">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#080A0D">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tetra6 — Consulting &amp; Contracting">
+<meta property="og:description" content="Independent consulting and technical practice — systems, security, and software work.">
+<meta property="og:image" content="https://tetra6.com/assets/og-image.png">
+<meta property="og:url" content="https://tetra6.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tetra6 — Consulting &amp; Contracting">
+<meta name="twitter:image" content="https://tetra6.com/assets/og-image.png">
 <style>
   :root {
     --tetra-black:    #080A0D;
@@ -44,12 +60,11 @@
   }
 
   .mark {
-    font-size: 2.75rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
+    height: 2.75rem;
+    width: auto;
     margin: 0 0 0.75rem;
+    display: block;
   }
-  .mark .six { color: var(--tetra-red); }
 
   .tagline {
     font-size: 1.15rem;
@@ -121,12 +136,12 @@
     margin-top: 0.5rem;
   }
   .project-card {
-    display: block;
+    display: flex;
+    flex-direction: column;
     padding: 1.1rem 1.25rem;
     background: var(--tetra-carbon);
     border: 1px solid var(--tetra-graphite);
     border-radius: 2px;
-    text-decoration: none;
     transition: border-color 0.15s ease;
   }
   .project-card:hover {
@@ -143,7 +158,30 @@
     font-size: 0.85rem;
     line-height: 1.5;
     margin: 0;
+    flex-grow: 1;
   }
+  .project-links {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.9rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--tetra-graphite);
+  }
+  .icon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.9rem;
+    height: 1.9rem;
+    color: var(--tetra-steel);
+    border-radius: 2px;
+    transition: color 0.15s ease, background 0.15s ease;
+  }
+  .icon-link:hover {
+    color: var(--tetra-white);
+    background: var(--tetra-graphite);
+  }
+  .icon-link svg { width: 16px; height: 16px; }
   .projects-more {
     margin-top: 1.25rem;
     font-size: 0.9rem;
@@ -246,9 +284,21 @@
 </style>
 </head>
 <body>
+  <svg style="display:none" aria-hidden="true">
+    <symbol id="icon-github" viewBox="0 0 16 16">
+      <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+    </symbol>
+    <symbol id="icon-globe" viewBox="0 0 16 16">
+      <circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.3" d="M1.5 8h13M8 1.5c2 2 2 11 0 13M8 1.5c-2 2-2 11 0 13"/>
+    </symbol>
+    <symbol id="icon-linkedin" viewBox="0 0 16 16">
+      <path fill="currentColor" d="M1.65 4.28a1.63 1.63 0 1 1 0-3.27 1.63 1.63 0 0 1 0 3.27zM.24 5.98h2.83V16H.24V5.98zM5.9 5.98h2.71v1.37h.04c.38-.71 1.3-1.47 2.68-1.47 2.87 0 3.4 1.85 3.4 4.26V16h-2.83v-4.87c0-1.16-.02-2.66-1.66-2.66-1.67 0-1.92 1.26-1.92 2.58V16H5.9V5.98z"/>
+    </symbol>
+  </svg>
   <div class="wrap">
     <header class="hero">
-      <p class="mark">tetra<span class="six">6</span></p>
+      <img class="mark" src="/assets/wordmark.png" alt="Tetra6" width="1200" height="239">
       <p class="tagline">Independent consulting &amp; technical contracting.</p>
     </header>
 
@@ -285,42 +335,74 @@
         embedded firmware, and open-licensed language/design resources.
       </p>
       <div class="project-grid">
-        <a class="project-card" href="https://github.com/rcampbellbassac/laochristian.org" target="_blank" rel="noopener">
+        <div class="project-card">
           <p class="name">laochristian.org</p>
           <p class="desc">Main site for a Lao-language Christian ministry — content, resources, and community outreach.</p>
-        </a>
-        <a class="project-card" href="https://github.com/rcampbellbassac/lao-christian-app" target="_blank" rel="noopener">
+          <div class="project-links">
+            <a class="icon-link" href="https://github.com/rcampbellbassac/laochristian.org" target="_blank" rel="noopener" aria-label="GitHub repository"><svg><use href="#icon-github"/></svg></a>
+            <a class="icon-link" href="https://www.laochristian.org/" target="_blank" rel="noopener" aria-label="Live site"><svg><use href="#icon-globe"/></svg></a>
+          </div>
+        </div>
+        <div class="project-card">
           <p class="name">lao-christian-app</p>
           <p class="desc">A Vue progressive web app delivering the same ministry's Bible, books, and media content as an installable app.</p>
-        </a>
-        <a class="project-card" href="https://github.com/rcampbellbassac/sea-sda.org" target="_blank" rel="noopener">
+          <div class="project-links">
+            <a class="icon-link" href="https://github.com/rcampbellbassac/lao-christian-app" target="_blank" rel="noopener" aria-label="GitHub repository"><svg><use href="#icon-github"/></svg></a>
+            <a class="icon-link" href="https://apps.laochristian.org/" target="_blank" rel="noopener" aria-label="Live site"><svg><use href="#icon-globe"/></svg></a>
+          </div>
+        </div>
+        <div class="project-card">
           <p class="name">sea-sda.org</p>
           <p class="desc">Southeast Asian Seventh-day Adventist ministry site.</p>
-        </a>
-        <a class="project-card" href="https://github.com/Missionary-Readiness-Institute/readiness-platform" target="_blank" rel="noopener">
+          <div class="project-links">
+            <a class="icon-link" href="https://github.com/rcampbellbassac/sea-sda.org" target="_blank" rel="noopener" aria-label="GitHub repository"><svg><use href="#icon-github"/></svg></a>
+            <a class="icon-link" href="https://sea-sda.org/" target="_blank" rel="noopener" aria-label="Live site"><svg><use href="#icon-globe"/></svg></a>
+          </div>
+        </div>
+        <div class="project-card">
           <p class="name">readiness-platform</p>
           <p class="desc">Training curriculum platform for the Missionary Readiness Institute, built on MkDocs.</p>
-        </a>
-        <a class="project-card" href="https://github.com/rcampbellbassac/cardputer-pda" target="_blank" rel="noopener">
+          <div class="project-links">
+            <a class="icon-link" href="https://github.com/Missionary-Readiness-Institute/readiness-platform" target="_blank" rel="noopener" aria-label="GitHub repository"><svg><use href="#icon-github"/></svg></a>
+            <a class="icon-link" href="https://missionaryreadiness.com/" target="_blank" rel="noopener" aria-label="Live site"><svg><use href="#icon-globe"/></svg></a>
+          </div>
+        </div>
+        <div class="project-card">
           <p class="name">cardputer-pda</p>
           <p class="desc">Rust firmware turning an M5Stack Cardputer into a pocket notebook/PDA.</p>
-        </a>
-        <a class="project-card" href="https://github.com/rcampbellbassac/Kmhmu-Dictionary" target="_blank" rel="noopener">
+          <div class="project-links">
+            <a class="icon-link" href="https://github.com/rcampbellbassac/cardputer-pda" target="_blank" rel="noopener" aria-label="GitHub repository"><svg><use href="#icon-github"/></svg></a>
+          </div>
+        </div>
+        <div class="project-card">
           <p class="name">Kmhmu-Dictionary</p>
           <p class="desc">Open, community-maintained Kmhmu' language wordlist.</p>
-        </a>
-        <a class="project-card" href="https://github.com/rcampbellbassac/lao-dictionary" target="_blank" rel="noopener">
+          <div class="project-links">
+            <a class="icon-link" href="https://github.com/rcampbellbassac/Kmhmu-Dictionary" target="_blank" rel="noopener" aria-label="GitHub repository"><svg><use href="#icon-github"/></svg></a>
+          </div>
+        </div>
+        <div class="project-card">
           <p class="name">lao-dictionary</p>
           <p class="desc">Open Lao wordlist for language tooling and reference.</p>
-        </a>
-        <a class="project-card" href="https://github.com/rcampbellbassac/KouangSiWaterfall" target="_blank" rel="noopener">
+          <div class="project-links">
+            <a class="icon-link" href="https://github.com/rcampbellbassac/lao-dictionary" target="_blank" rel="noopener" aria-label="GitHub repository"><svg><use href="#icon-github"/></svg></a>
+          </div>
+        </div>
+        <div class="project-card">
           <p class="name">KouangSiWaterfall</p>
           <p class="desc">An open-licensed display font.</p>
-        </a>
-        <a class="project-card" href="https://github.com/KentuckyHilltribe/kentuckyhilltribe.com" target="_blank" rel="noopener">
+          <div class="project-links">
+            <a class="icon-link" href="https://github.com/rcampbellbassac/KouangSiWaterfall" target="_blank" rel="noopener" aria-label="GitHub repository"><svg><use href="#icon-github"/></svg></a>
+          </div>
+        </div>
+        <div class="project-card">
           <p class="name">kentuckyhilltribe.com</p>
           <p class="desc">Site for Kentucky Hilltribe, the practice Tetra6 grew out of.</p>
-        </a>
+          <div class="project-links">
+            <a class="icon-link" href="https://github.com/KentuckyHilltribe/kentuckyhilltribe.com" target="_blank" rel="noopener" aria-label="GitHub repository"><svg><use href="#icon-github"/></svg></a>
+            <a class="icon-link" href="https://kentuckyhilltribe.com/" target="_blank" rel="noopener" aria-label="Live site"><svg><use href="#icon-globe"/></svg></a>
+          </div>
+        </div>
       </div>
       <p class="projects-more">
         More on <a href="https://github.com/rcampbellbassac" target="_blank" rel="noopener">GitHub</a>.
@@ -330,8 +412,8 @@
     <section class="connect">
       <h2>Connect</h2>
       <div class="connect-links">
-        <a class="connect-link" href="https://www.linkedin.com/in/rcampbellbassac" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="connect-link" href="https://github.com/rcampbellbassac" target="_blank" rel="noopener">GitHub</a>
+        <a class="connect-link" href="https://www.linkedin.com/in/rcampbellbassac" target="_blank" rel="noopener"><svg width="16" height="16"><use href="#icon-linkedin"/></svg> LinkedIn</a>
+        <a class="connect-link" href="https://github.com/rcampbellbassac" target="_blank" rel="noopener"><svg width="16" height="16"><use href="#icon-github"/></svg> GitHub</a>
       </div>
       <p class="connect-note">
         A dedicated Tetra6 LinkedIn Page is planned once the business is

@@ -1,0 +1,11 @@
+{
+  "name": "Tetra6",
+  "short_name": "Tetra6",
+  "icons": [
+    { "src": "/assets/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#080A0D",
+  "background_color": "#080A0D",
+  "display": "standalone"
+}

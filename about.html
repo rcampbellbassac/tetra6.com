@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — Tetra6</title>
+<meta name="description" content="About tetra6: a Michigan-based technology company in formation, focused on secure, reliable, practical systems: cybersecurity, infrastructure, software, industrial IT and systems integration.">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About — Tetra6">
+<meta property="og:description" content="Secure, reliable, practical systems: cybersecurity, infrastructure, software, industrial IT and systems integration.">
+<meta property="og:image" content="https://tetra6.com/assets/og-image.png">
+<meta property="og:url" content="https://tetra6.com/about.html">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#080A0D">
+<style>
+  :root {
+    --tetra-black:    #080A0D;
+    --tetra-carbon:   #12161B;
+    --tetra-graphite: #252B33;
+    --tetra-red:      #E21B2D;
+    --tetra-steel:    #74808D;
+    --tetra-silver:   #B8C0C8;
+    --tetra-white:    #F5F7F9;
+  }
+  /* ---------- Tactical ground ----------
+     Fixed layer stack behind all content: video slot -> terrain canvas ->
+     vignette. The video slot is deliberately empty and sits lowest, so a
+     looping background can be dropped in later without restructuring. */
+  #ground {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  #video-slot { position: absolute; inset: 0; z-index: -1; }
+  #ground canvas { width: 100%; height: 100%; display: block; }
+  #vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 40%,
+      rgba(8,10,13,0.78) 0%, rgba(8,10,13,0.38) 46%, transparent 82%);
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--tetra-black);
+    color: var(--tetra-silver);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.7;
+  }
+  .wrap { position: relative; z-index: 1; max-width: 44rem; margin: 0 auto; padding: 0 1.5rem; }
+  header.page {
+    padding: 4rem 0 2rem;
+    border-bottom: 1px solid var(--tetra-graphite);
+  }
+  .backlink {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--tetra-steel);
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+  }
+  .backlink:hover { color: var(--tetra-white); }
+  h1 {
+    font-size: 1.9rem;
+    color: var(--tetra-white);
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  .updated { font-size: 0.85rem; color: var(--tetra-steel); margin: 0; }
+  main { padding: 2.5rem 0 1rem; }
+  h2 {
+    font-size: 1.05rem;
+    color: var(--tetra-white);
+    margin: 2.5rem 0 0.75rem;
+    padding-left: 0.85rem;
+    border-left: 3px solid var(--tetra-red);
+    line-height: 1.4;
+  }
+  h2:first-of-type { margin-top: 0; }
+  p { margin: 0 0 1rem; }
+  ul { margin: 0 0 1rem; padding-left: 1.15rem; }
+  li { margin-bottom: 0.5rem; }
+  strong { color: var(--tetra-white); font-weight: 600; }
+  a { color: var(--tetra-silver); }
+  a:hover { color: var(--tetra-white); }
+  .callout {
+    background: var(--tetra-carbon);
+    border: 1px solid var(--tetra-graphite);
+    padding: 1.1rem 1.3rem;
+    margin: 1.25rem 0;
+    border-radius: 2px;
+  }
+  .callout p { margin: 0; }
+  footer {
+    padding: 2.5rem 0 4rem;
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--tetra-graphite);
+    color: var(--tetra-steel);
+    font-size: 0.82rem;
+  }
+  .six { color: var(--tetra-red); }
+  .dek { font-size: 1.1rem; color: var(--tetra-white); margin: 0.25rem 0 0; }
+  .lead { font-size: 1.12rem; color: var(--tetra-white); line-height: 1.65; }
+  h3 { font-size: 0.98rem; color: var(--tetra-white); margin: 1.75rem 0 0.4rem; }
+  .principles { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 0.75rem; margin: 0 0 1rem; }
+  .principles div { background: var(--tetra-carbon); border: 1px solid var(--tetra-graphite); padding: 0.9rem 1.1rem; border-radius: 2px; min-width: 0; }
+  .principles strong { display: block; margin-bottom: 0.25rem; }
+  .principles p { margin: 0; font-size: 0.95rem; }
+  .mission { font-size: 1.1rem; color: var(--tetra-white); border-left: 3px solid var(--tetra-red); padding-left: 1rem; }
+  .signoff { margin-top: 2rem; color: var(--tetra-white); font-weight: 600; }
+</style>
+</head>
+<body>
+<div id="ground" aria-hidden="true">
+  <div id="video-slot"></div>
+  <canvas id="terrain"></canvas>
+  <div id="vignette"></div>
+</div>
+<div class="wrap">
+
+  <header class="page">
+    <a class="backlink" href="/">&larr; tetra6.com</a>
+    <h1>About Tetra<span class="six">6</span></h1>
+    <p class="dek">Technology built with purpose. Solutions designed to last.</p>
+  </header>
+
+  <main>
+    <p class="lead">
+      Tetra<span class="six">6</span> is a Michigan-based technology company in formation, focused on building secure, reliable and practical
+      systems for organizations operating in an increasingly connected world.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>Where Tetra6 stands today:</strong> Tetra6 is in its early stages and has not yet
+        been incorporated. Formation is under way; Tetra6 does not yet conduct business.
+      </p>
+    </div>
+
+    <p>
+      Tetra6 brings together information technology, cybersecurity, software engineering, infrastructure management
+      and systems integration to help organizations solve problems, strengthen operations and prepare for the future.
+    </p>
+    <p>
+      Our approach is rooted in a simple philosophy: technology should serve a meaningful purpose. It should be secure
+      by design, maintainable over time, adaptable to changing requirements, and effective in the environments where
+      people actually depend on it.
+    </p>
+    <p>
+      From network infrastructure and Linux-based systems to industrial technology, automation and custom software,
+      Tetra6 seeks to bridge the gap between technical complexity and real-world results.
+    </p>
+
+    <h2>What we do</h2>
+    <p>Tetra6 works at the intersection of several complementary technology disciplines.</p>
+
+    <h3>Cybersecurity &amp; resilience</h3>
+    <p>
+      We help organizations approach security as a foundational engineering principle rather than an afterthought. Our areas of focus include
+      network segmentation, identity and access management, infrastructure hardening, secure remote connectivity,
+      vulnerability management and defense-in-depth architectures, with an emphasis on practical risk reduction,
+      operational continuity, and security measures appropriate to each organization's mission and resources.
+    </p>
+
+    <h3>IT infrastructure &amp; systems engineering</h3>
+    <p>
+      Tetra6 focuses on designing, deploying, integrating and maintaining infrastructure across Linux and Windows environments, network
+      systems, servers, virtualization platforms, cloud technologies, storage and connected devices. Our objective is
+      infrastructure that is understandable, supportable and built for long-term reliability.
+    </p>
+
+    <h3>Software development &amp; automation</h3>
+    <p>
+      We develop and integrate software that makes technology more useful: web applications, APIs, databases, scripting, workflow automation, systems monitoring, and custom applications
+      designed around specific operational needs. We favor open standards, interoperability, thoughtful documentation
+      and maintainable architectures over unnecessary complexity or vendor dependence.
+    </p>
+
+    <h3>Industrial IT &amp; operational technology</h3>
+    <p>
+      The boundaries between information technology and operational technology continue to converge. Tetra6 brings an
+      understanding of manufacturing environments, manufacturing execution systems (MES), industrial connectivity, data
+      collection, operational visibility, and the reliability requirements of production systems, helping connect
+      information, people and processes without compromising the stability or security of critical operations.
+    </p>
+
+    <h3>Technical consulting &amp; specialized solutions</h3>
+    <p>
+      Not every problem fits neatly into an existing product or service category. We approach unusual technical
+      challenges through research, systems thinking, prototyping, testing and practical engineering, aiming to identify what
+      works, explain why, and deliver measurable value.
+    </p>
+
+    <h2>Our philosophy</h2>
+    <div class="principles">
+      <div><strong>Security by design</strong><p>Security is considered from the beginning of a project, not added after deployment.</p></div>
+      <div><strong>Practical engineering</strong><p>The best solution is not necessarily the most complicated. We prioritize reliability, maintainability, cost-effectiveness and operational value.</p></div>
+      <div><strong>Integrity &amp; accountability</strong><p>We believe in transparent communication, responsible recommendations, sound documentation, and delivering work that can withstand scrutiny.</p></div>
+      <div><strong>Interoperability &amp; freedom</strong><p>Where practical, we favor open standards, portable solutions, and architectures that give organizations meaningful control over their technology.</p></div>
+      <div><strong>Continuous improvement</strong><p>Technology evolves, threats change and needs grow; we approach our work with curiosity and disciplined learning.</p></div>
+      <div><strong>Mission-focused service</strong><p>The systems we build often serve purposes far beyond technology. Our responsibility is to understand those purposes.</p></div>
+    </div>
+
+    <h2>Who we serve</h2>
+    <p>Tetra6 is being developed to support a range of organizations, including:</p>
+    <ul>
+      <li>Small and medium-sized businesses seeking dependable technical solutions</li>
+      <li>Manufacturing and industrial organizations connecting IT and operational systems</li>
+      <li>Nonprofit, educational and mission-driven organizations working with limited resources</li>
+      <li>Government agencies and public-sector organizations requiring accountable, security-conscious technical support</li>
+      <li>Organizations facing specialized integration, infrastructure or software challenges</li>
+    </ul>
+    <p>We believe sophisticated technical solutions should be accessible, understandable, and appropriate to the organizations that use them.</p>
+
+    <h2>Giving back</h2>
+    <p>
+      Part of our work is given freely: websites and tools for churches and community groups, built and supported at
+      no charge. Sites that carry the line &ldquo;Supported by Tetra6 &middot; part of our commitment to giving back&rdquo;
+      are part of that commitment. If you arrived here from a Tetra6 link on another site, that site is built or
+      maintained by Tetra6.
+    </p>
+
+    <h2>Our vision</h2>
+    <p>
+      To become a trusted technology partner known for thoughtful engineering, ethical practices, technical
+      versatility, and a commitment to solving difficult problems: capable of supporting everything from small
+      organizational infrastructure needs to demanding industrial and public-sector projects, while keeping the personal
+      accountability and attention to detail of a specialized engineering firm.
+    </p>
+
+    <h2>Our mission</h2>
+    <p class="mission">To design, secure, integrate and improve technology systems that empower organizations, strengthen resilience, and support meaningful work.</p>
+
+    <h2>Our commitment</h2>
+    <p>
+      We do not believe in complexity for its own sake, security theater, or technology chosen merely because it is
+      fashionable. We believe in understanding the problem, selecting the right tools, engineering responsibly, and
+      building solutions that organizations can trust.
+    </p>
+    <p class="signoff">Purposeful technology. Practical engineering. Secure foundations.</p>
+
+    <p><a href="/#contact-form">Get in touch &rarr;</a></p>
+  </main>
+
+  <footer>
+    &copy; 2026 Tetra6. &nbsp;·&nbsp;
+    <a href="/">Home</a> &nbsp;·&nbsp;
+    <a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+    <a href="/terms.html">Terms of Service</a>
+  </footer>
+
+</div>
+<script src="/assets/ground.js"></script>
+</body>
+</html>

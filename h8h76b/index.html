@@ -1,0 +1,29 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Church Mac steps</title>
+<style>
+:root{--bg:#f6f7f9;--fg:#1b1f24;--muted:#5b6672;--card:#fff;--line:#d7dce2;--accent:#2f6f88;--code:#eef1f4}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14181d;--fg:#e6e9ed;--muted:#9aa5b1;--card:#1c2228;--line:#2c343d;--accent:#5fb0cc;--code:#0f1317}}
+body{background:var(--bg);color:var(--fg);font:16px/1.5 -apple-system,system-ui,sans-serif;margin:0;padding:24px 16px}
+main{max-width:860px;margin:0 auto}h1{font-size:1.5rem}h2{font-size:1.15rem;margin-top:1.8em;border-top:1px solid var(--line);padding-top:1em}
+.note,p{color:var(--fg)}code{background:var(--code);padding:1px 5px;border-radius:4px}
+.box{position:relative;margin:10px 0}pre{background:var(--code);border:1px solid var(--line);border-radius:8px;padding:14px 14px 14px 14px;overflow-x:auto;white-space:pre;font:14px/1.45 ui-monospace,Menlo,monospace;margin:0}
+.copy{display:block;margin:6px 0 0 auto;background:var(--accent);color:#fff;border:0;border-radius:6px;padding:8px 14px;font-size:15px;cursor:pointer}
+#gate{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px;max-width:360px;margin:12vh auto}
+input{font-size:18px;padding:8px;width:100%;box-sizing:border-box;margin:8px 0;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg)}
+#err{color:#c0392b;min-height:1.2em}
+</style></head><body><main>
+<div id="gate"><b>Password</b><input id="pw" type="password" autocomplete="off" autofocus><button class="copy" id="go">Open</button><div id="err"></div></div>
+<div id="out"></div></main>
+<script>
+const D={"s": "rV4zNjvXsmnxDORqOEmJ0Q==", "i": "Yv2SaKPNOvTJr9kb", "c": "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", "n": 600000};
+const u=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+async function open_(){const e=document.getElementById('err');e.textContent='Checking...';
+try{const k0=await crypto.subtle.importKey('raw',new TextEncoder().encode(document.getElementById('pw').value.trim()),'PBKDF2',false,['deriveKey']);
+const k=await crypto.subtle.deriveKey({name:'PBKDF2',salt:u(D.s),iterations:D.n,hash:'SHA-256'},k0,{name:'AES-GCM',length:256},false,['decrypt']);
+const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:u(D.i)},k,u(D.c));
+document.getElementById('gate').remove();const o=document.getElementById('out');o.innerHTML=new TextDecoder().decode(pt);
+o.querySelectorAll('pre').forEach(p=>{const w=document.createElement('div');w.className='box';p.replaceWith(w);w.appendChild(p);
+const b=document.createElement('button');b.className='copy';b.textContent='Copy';b.onclick=async()=>{try{await navigator.clipboard.writeText(p.textContent);b.textContent='Copied';}catch(x){const r=document.createRange();r.selectNodeContents(p);const s=getSelection();s.removeAllRanges();s.addRange(r);document.execCommand('copy');b.textContent='Copied';}setTimeout(()=>b.textContent='Copy',1500)};w.appendChild(b);});
+}catch(x){e.textContent='Wrong password';}}
+document.getElementById('go').onclick=open_;document.getElementById('pw').addEventListener('keydown',ev=>{if(ev.key==='Enter')open_()});
+</script></body></html>
